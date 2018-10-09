@@ -7,6 +7,11 @@ public class DataHandler {
     public DataHandler() {
     }
 
+    public DataHandler(Downloader downloader, Uploader uploader) {
+        this.downloader = downloader;
+        this.uploader = uploader;
+    }
+
     public void handleData(String srcPath, String destPath) {
         String content = this.downloader.download(srcPath);
         String handledContent = handle(content);

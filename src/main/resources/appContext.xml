@@ -3,5 +3,11 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean
+    <bean id="dataHandler" class="ru.innopolis.stc13.iocTest.IO.DataHandler" scope="prototype">
+        <constructor-arg name="downloader" ref="fileDownloader"/>
+        <constructor-arg name="uploader" ref="fileUploader"/>
+    </bean>
+
+    <bean id="fileDownloader" class="ru.innopolis.stc13.iocTest.IO.FileDownloader"/>
+    <bean id="fileUploader" class="ru.innopolis.stc13.iocTest.IO.FileUploader"/>
 </beans>

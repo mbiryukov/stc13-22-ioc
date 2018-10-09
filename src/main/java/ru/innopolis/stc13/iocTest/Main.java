@@ -1,14 +1,15 @@
 package ru.innopolis.stc13.iocTest;
 
-import ru.innopolis.stc13.iocTest.IO.DBDownloader;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.innopolis.stc13.iocTest.IO.DataHandler;
-import ru.innopolis.stc13.iocTest.IO.FileUploader;
 
 public class Main {
     public static void main(String[] args) {
-        DataHandler dataHandler = new DataHandler();
-        dataHandler.setDownloader(new DBDownloader());
-        dataHandler.setUploader(new FileUploader());
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("appContext.xml");
+        DataHandler dataHandler =
+                (DataHandler) applicationContext.getBean("dataHandler");
         dataHandler.handleData("SomeSrc", "AnotherSrc");
     }
 }
